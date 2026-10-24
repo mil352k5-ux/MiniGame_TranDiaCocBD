@@ -17,12 +17,16 @@
     "DATA/gameplay_rules_v2.md"
   ],
   "needs_production": [
-    {"asset": "CHR/ngo_quyen_high_res", "priority": "P1", "requirement": "Nhân vật rõ nét, tách nền, 3 pose, hỗ trợ màn hình lớn"},
-    {"asset": "BGM/lobby_theme", "priority": "P1", "requirement": "Nhạc nền sảnh, loop 60–90 giây, không bản quyền bên ngoài"},
-    {"asset": "BGM/gameplay_theme", "priority": "P1", "requirement": "Nhạc nền gameplay hồi hộp, loop 90–120 giây, có thể giảm âm khi voice phát"},
-    {"asset": "VO/battle_calls", "priority": "P1", "requirement": "Các câu hô ngắn: Nước rút, Giữ trận địa, Thả cọc, Phản công"},
-    {"asset": "VFX/tide_opaque_mask", "priority": "P0", "requirement": "Che hoàn toàn cọc cũ khi nước dâng, không để lộ marker"},
-    {"asset": "VFX/round_cheer", "priority": "P1", "requirement": "Sóng, cờ, ánh sáng và hạt nước cho phân đoạn phản công"}
+    {"asset": "VO/battle_calls", "priority": "P1", "requirement": "Thu hoặc tạo voice hợp lệ cho các câu: Nước rút, Giữ trận địa, Thả cọc, Phản công"}
+  ],
+  "prototype_added": [
+    {"asset": "CHR/ngo_quyen_highres_*.png", "priority": "P1", "requirement": "3 pose PNG độ phân giải cao, nền trong suốt; cần art review trước bản chính thức"},
+    {"asset": "CHR/ngo_quyen_cloak_*.svg", "priority": "P2", "requirement": "Lớp áo choàng tùy chọn cho tween"},
+    {"asset": "BGM/lobby_theme_prototype.wav", "priority": "P1", "requirement": "Loop tự tạo 16 giây để IT tích hợp prototype"},
+    {"asset": "BGM/gameplay_theme_prototype.wav", "priority": "P1", "requirement": "Loop hồi hộp tự tạo 16 giây để IT tích hợp prototype"},
+    {"asset": "SFX/vietnamese_drum_prototype.wav", "priority": "P2", "requirement": "Một hit trống tự tạo cho phản công"},
+    {"asset": "VFX/advanced_foam.svg", "priority": "P1", "requirement": "Bọt nước và sóng cho phân đoạn phản công"},
+    {"asset": "FONT/BeVietnamPro-*.ttf", "priority": "P1", "requirement": "Font tiếng Việt có giấy phép OFL"}
   ],
   "content_review": [
     "Xác minh câu chữ lịch sử về Bạch Đằng năm 938",

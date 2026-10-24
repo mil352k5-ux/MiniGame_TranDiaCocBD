@@ -1,0 +1,6 @@
+Font: Be Vietnam Pro
+Source: https://fonts.google.com/specimen/Be+Vietnam+Pro
+License: SIL Open Font License 1.1
+License text: ../FONT/OFL.txt
+Downloaded: 2026-10-25
+Usage: Vietnamese UI text and captions in the game asset pack.

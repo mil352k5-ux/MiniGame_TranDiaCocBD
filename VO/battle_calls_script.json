@@ -1,0 +1,12 @@
+{
+  "language": "vi-VN",
+  "status": "script_ready_recording_required",
+  "direction": "Giọng nam/nữ trung tính, rõ chữ, hô ngắn, không cần diễn quá kịch. Mỗi câu 0.8–1.5 giây, peak -3 dBFS, WAV 48 kHz mono.",
+  "lines": [
+    {"id": "tide_low", "text": "Nước rút!", "usage": "Bắt đầu giai đoạn quan sát và cắm cọc"},
+    {"id": "hold_line", "text": "Giữ trận địa!", "usage": "Người chơi chậm hoặc sắp hết thời gian"},
+    {"id": "drop_stake", "text": "Thả cọc!", "usage": "Cắm đúng vị trí"},
+    {"id": "counter_attack", "text": "Phản công!", "usage": "Kết thúc vòng thành công"},
+    {"id": "victory", "text": "Bạch Đằng đại thắng!", "usage": "Hoàn thành toàn bộ thử thách"}
+  ]
+}

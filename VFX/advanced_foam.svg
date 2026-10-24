@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="Hiệu ứng bọt nước nâng cao cho phân đoạn phản công">
+  <defs>
+    <linearGradient id="foam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f5fff8" stop-opacity=".96"/>
+      <stop offset=".6" stop-color="#bdeff0" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#72c8d2" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <path d="M0 284 C88 244 130 258 189 274 C262 294 314 248 388 264 C469 282 523 310 592 268 C674 218 722 268 801 278 C895 290 946 229 1026 252 C1090 270 1148 264 1200 238 V360 H0Z" fill="url(#foam)" filter="url(#glow)"/>
+  <path d="M0 287 C84 250 130 268 192 283 C264 302 311 258 389 273 C469 289 525 316 593 276 C676 228 725 275 802 286 C897 298 944 239 1028 261 C1090 279 1147 272 1200 247" fill="none" stroke="#f8ffff" stroke-width="9" stroke-linecap="round" opacity=".92"/>
+  <g fill="#e9ffff" opacity=".88">
+    <circle cx="132" cy="226" r="7"/><circle cx="178" cy="202" r="4"/><circle cx="320" cy="232" r="8"/><circle cx="462" cy="208" r="5"/><circle cx="684" cy="190" r="8"/><circle cx="752" cy="218" r="4"/><circle cx="956" cy="206" r="6"/><circle cx="1100" cy="184" r="5"/>
+  </g>
+</svg>

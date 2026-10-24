@@ -1,0 +1,17 @@
+{
+  "id": "ngo_quyen_cloak_rig",
+  "asset": "CHR/ngo_quyen_highres_command.png",
+  "purpose": "Tách áo choàng thành lớp riêng để tạo chuyển động khi ra hiệu và phản công.",
+  "layers": [
+    {"id": "body", "file": "CHR/ngo_quyen_highres_idle.png", "z": 0},
+    {"id": "cloak_back", "file": "CHR/ngo_quyen_cloak_back.svg", "z": 1},
+    {"id": "cloak_front", "file": "CHR/ngo_quyen_cloak_front.svg", "z": 2},
+    {"id": "character_pose", "file": "CHR/ngo_quyen_highres_command.png", "z": 3}
+  ],
+  "clips": {
+    "command": {"duration_ms": 1000, "cloak_back": "rotate(-3deg) translate(-4px, 2px)", "cloak_front": "rotate(2deg) translate(3px, 0px)"},
+    "victory": {"duration_ms": 1000, "cloak_back": "rotate(5deg) translate(6px, -2px)", "cloak_front": "rotate(-4deg) translate(-4px, 0px)"},
+    "idle": {"duration_ms": 1800, "cloak_back": "rotate(0deg) translate(0px, 0px)", "cloak_front": "rotate(0deg) translate(0px, 0px)"}
+  },
+  "implementation": "Use the SVG layers as optional overlays. If the renderer cannot layer PNG and SVG, keep the generated PNG pose as the fallback sprite."
+}

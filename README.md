@@ -22,22 +22,21 @@ Demo đã kiểm tra cú pháp JavaScript bằng `node --check`. Bản V2 cần 
 ## Cấu trúc tài nguyên
 
 - `BG/`: cảnh sông, bờ sông và lớp sóng.
-- `CHR/`: Ngô Quyền với các tư thế chờ, ra hiệu và chiến thắng.
+- `CHR/`: Ngô Quyền với các tư thế chờ, ra hiệu và chiến thắng; có thêm bộ PNG độ phân giải cao và lớp áo choàng tùy chọn.
 - `PROP/`: cọc, tàu Nam Hán và thuyền nghi binh.
 - `UI/`, `ICO/`: giao diện và biểu tượng.
-- `VFX/`: splash, impact và asset hỗ trợ che nước/ăn mừng.
+- `VFX/`: splash, impact, bọt nước nâng cao và asset hỗ trợ che nước/ăn mừng.
 - `ANM/`: hợp đồng chuyển động để lập trình tween/canvas.
-- `SFX/`, `BGM/`: âm thanh prototype và yêu cầu âm thanh cần sản xuất.
+- `SFX/`, `BGM/`: âm thanh prototype tự tạo; `VO/battle_calls_script.json` là kịch bản chờ thu giọng.
+- `FONT/`: Be Vietnam Pro và giấy phép OFL dùng cho tiếng Việt trong UI.
 - `DATA/`: luật chơi, cấu hình vòng, văn bản giao diện và checklist nội dung.
 - `REFERENCE/`: định hướng mỹ thuật. Không dùng concept nguyên ảnh làm sprite trong game.
 
 ## Asset cần IT/designer bổ sung
 
-- Nhân vật Ngô Quyền độ phân giải cao, hỗ trợ tiếng Việt đầy đủ trong UI.
-- Nhạc nền sảnh và nhạc nền gameplay riêng.
-- Tiếng trống, tiếng hò reo và lời hô chiến trận ở phân đoạn phản công.
-- Lớp nước dâng kín toàn bộ vùng cọc.
-- Hiệu ứng chiến thắng vòng và phản công rõ hơn.
+- Đã bổ sung nhân vật Ngô Quyền PNG độ phân giải cao, lớp áo choàng, hiệu ứng bọt nước, font tiếng Việt và nhạc/trống prototype.
+- Còn cần thu âm hoặc tạo voice hợp lệ cho các câu hô chiến trận trong `VO/battle_calls_script.json`.
+- Lớp nước dâng kín toàn bộ vùng cọc và hiệu ứng chiến thắng vòng đã có asset SVG trong pack.
 
 Danh sách chi tiết và trạng thái nằm trong `asset_manifest.xlsx` và `DATA/asset_handoff_v2.json`.
 
