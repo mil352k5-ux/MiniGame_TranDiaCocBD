@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-label="Hiệu ứng reo hò chiến thắng">
+  <defs>
+    <radialGradient id="light"><stop offset="0" stop-color="#fff4bd" stop-opacity=".85"/><stop offset="1" stop-color="#ffc85d" stop-opacity="0"/></radialGradient>
+  </defs>
+  <circle cx="600" cy="140" r="180" fill="url(#light)"/>
+  <g fill="none" stroke="#f6d88e" stroke-width="5" stroke-linecap="round" opacity=".85">
+    <path d="M150 220 L215 130"/><path d="M270 245 L305 120"/><path d="M930 245 L895 120"/><path d="M1050 220 L985 130"/>
+  </g>
+  <g fill="#f9e6a5" opacity=".9">
+    <circle cx="365" cy="84" r="6"/><circle cx="455" cy="45" r="5"/><circle cx="745" cy="55" r="6"/><circle cx="835" cy="95" r="5"/>
+  </g>
+</svg>

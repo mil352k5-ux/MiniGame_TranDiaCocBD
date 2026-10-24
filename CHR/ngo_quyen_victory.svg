@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="365" height="390" viewBox="0 0 365 390">
+<defs><linearGradient id="cloak" x2="1" y2="1"><stop stop-color="#a82d2c"/><stop offset=".7" stop-color="#6e252e"/><stop offset="1" stop-color="#401c26"/></linearGradient><linearGradient id="armor" x2="1" y2="1"><stop stop-color="#b9934e"/><stop offset=".5" stop-color="#615039"/><stop offset="1" stop-color="#302f32"/></linearGradient></defs>
+<ellipse cx="120" cy="379" rx="84" ry="14" fill="#10262b" opacity=".3"/>
+<path d="M104 205Q43 254 14 326L25 331 74 302 35 366 97 333 132 363 129 212Z" fill="url(#cloak)" stroke="#4c2328" stroke-width="5"/>
+<path d="M101 304 87 364 121 370 137 307Z" fill="#414247" stroke="#27252b" stroke-width="5"/>
+<path d="M140 306 158 367 192 369 175 306Z" fill="#393b43" stroke="#27252b" stroke-width="5"/>
+<path d="M83 362 123 364 123 378 77 378Z M158 363 201 362 205 377 163 377Z" fill="#282b30" stroke="#bd8a48" stroke-width="3"/>
+<path d="M82 195Q111 165 159 183L186 307Q136 333 82 307Z" fill="url(#armor)" stroke="#29282e" stroke-width="6"/>
+<path d="M88 215Q131 233 172 219 M99 250L168 258 M104 286L174 283" stroke="#d8b671" stroke-width="6" fill="none" opacity=".78"/>
+<path d="M127 185 112 305" stroke="#4a3533" stroke-width="10"/><ellipse cx="135" cy="260" rx="17" ry="14" fill="#d0a65d" stroke="#49382f" stroke-width="5"/>
+<path d="M116 184 108 161Q86 166 83 184L72 209 102 225Z M155 181 169 172Q190 182 193 195L181 217 154 212Z" fill="#5b5453" stroke="#c5a265" stroke-width="5"/>
+<path d="M100 145Q94 94 142 90Q179 96 171 145L153 169 117 168Z" fill="#d19b74" stroke="#543d34" stroke-width="5"/>
+<path d="M98 116Q96 74 140 72Q177 77 173 115L160 105 143 96 118 112Z" fill="#27272e"/>
+<path d="M109 93 132 67 156 97" stroke="#d7aa5b" stroke-width="10" fill="none"/>
+<path d="M118 143Q140 157 159 142" stroke="#62432e" stroke-width="4" fill="none"/>
+<path d="M126 130l8-2M151 128l7-2" stroke="#262525" stroke-width="3"/>
+<path d="M127 154Q133 171 154 159" stroke="#2b2727" stroke-width="7" fill="none"/>
+<path d="M170 183Q202 140 210 113" stroke="#575158" stroke-width="24" fill="none" stroke-linecap="round"/><circle cx="211" cy="111" r="11" fill="#c69776"/><path d="M211 111L250 30" stroke="#e2e9ef" stroke-width="8" stroke-linecap="round"/><path d="M250 30L252 8 261 29Z" fill="#fff4d6"/><path d="M200 114L219 122" stroke="#d6b06e" stroke-width="7"/></svg>

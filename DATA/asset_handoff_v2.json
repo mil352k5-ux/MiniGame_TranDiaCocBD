@@ -1,0 +1,33 @@
+{
+  "pack": "Bạch Đằng 938 – Trận địa cọc",
+  "version": "MVP V2 Handoff",
+  "purpose": "Bàn giao cho IT và designer để cập nhật prototype gameplay",
+  "ready": [
+    "BG/river_scene.svg",
+    "BG/shore_foreground.svg",
+    "BG/wave_strip.svg",
+    "CHR/ngo_quyen_idle.svg",
+    "CHR/ngo_quyen_command.svg",
+    "CHR/ngo_quyen_victory.svg",
+    "PROP/stake.svg",
+    "PROP/enemy_ship.svg",
+    "DEMO/game.js",
+    "DEMO/index.html",
+    "DATA/round_config_v2.json",
+    "DATA/gameplay_rules_v2.md"
+  ],
+  "needs_production": [
+    {"asset": "CHR/ngo_quyen_high_res", "priority": "P1", "requirement": "Nhân vật rõ nét, tách nền, 3 pose, hỗ trợ màn hình lớn"},
+    {"asset": "BGM/lobby_theme", "priority": "P1", "requirement": "Nhạc nền sảnh, loop 60–90 giây, không bản quyền bên ngoài"},
+    {"asset": "BGM/gameplay_theme", "priority": "P1", "requirement": "Nhạc nền gameplay hồi hộp, loop 90–120 giây, có thể giảm âm khi voice phát"},
+    {"asset": "VO/battle_calls", "priority": "P1", "requirement": "Các câu hô ngắn: Nước rút, Giữ trận địa, Thả cọc, Phản công"},
+    {"asset": "VFX/tide_opaque_mask", "priority": "P0", "requirement": "Che hoàn toàn cọc cũ khi nước dâng, không để lộ marker"},
+    {"asset": "VFX/round_cheer", "priority": "P1", "requirement": "Sóng, cờ, ánh sáng và hạt nước cho phân đoạn phản công"}
+  ],
+  "content_review": [
+    "Xác minh câu chữ lịch sử về Bạch Đằng năm 938",
+    "Xác nhận quyền sử dụng nhạc và giọng đọc",
+    "Playtest trên màn hình cảm ứng và laptop của gian hàng",
+    "Kiểm tra tỷ lệ hoàn thành ở chế độ Experience và Challenge"
+  ]
+}

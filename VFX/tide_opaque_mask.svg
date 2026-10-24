@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 330" role="img" aria-label="Lớp nước dâng che toàn bộ bãi cọc">
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#79d4df" stop-opacity=".92"/>
+      <stop offset=".22" stop-color="#247b9c" stop-opacity=".98"/>
+      <stop offset="1" stop-color="#082b54" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="soften"><feGaussianBlur stdDeviation="1.5"/></filter>
+  </defs>
+  <path d="M0 35 C120 10 210 55 330 32 S560 8 690 38 S920 60 1050 28 S1150 12 1200 30 V330 H0Z" fill="url(#water)"/>
+  <path d="M0 63 C160 34 265 78 410 58 S690 35 820 62 S1050 86 1200 55" fill="none" stroke="#c4f3ed" stroke-opacity=".48" stroke-width="5" filter="url(#soften)"/>
+  <path d="M0 108 C150 78 280 120 420 102 S700 82 860 110 S1060 130 1200 100" fill="none" stroke="#6ec4d2" stroke-opacity=".34" stroke-width="3"/>
+</svg>

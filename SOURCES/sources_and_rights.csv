@@ -1,0 +1,6 @@
+﻿Asset,Source/author,License/status,Usage note
+"BG, CHR, PROP, UI, ICO, VFX","Original procedural SVG created for this game","Original generated assets","Vector images are a prototype; illustration is stylized, not historical proof"
+"REFERENCE/style_concept_NOT_GAME_READY.png","Generated concept artwork in this conversation","AI-generated concept","Reference only; not a layered sprite"
+"BGM/ambient_original.mp3","Code-synthesized original audio","Original procedural audio","No sampled recording; not a historically authentic composition"
+"SFX/*.wav","Code-synthesized original audio","Original procedural audio","Basic MVP sounds"
+"Historical background","General historical account","Needs subject matter review","No public historical photos/audio copied into game"

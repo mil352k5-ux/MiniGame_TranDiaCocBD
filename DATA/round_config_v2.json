@@ -1,0 +1,43 @@
+{
+  "game_id": "bach_dang_938_stake_memory_v2",
+  "locale": "vi-VN",
+  "display_score": false,
+  "modes": {
+    "experience": {
+      "rounds": [
+        {"round": 1, "required": 5, "base_speed": 100, "growth": 0.1, "time_limit": 45},
+        {"round": 2, "required": 6, "base_speed": 120, "growth": 0.12, "time_limit": 43},
+        {"round": 3, "required": 7, "base_speed": 140, "growth": 0.15, "time_limit": 42},
+        {"round": 4, "required": 8, "base_speed": 160, "growth": 0.18, "time_limit": 40},
+        {"round": 5, "required": 10, "base_speed": 180, "growth": 0.2, "time_limit": 40}
+      ]
+    },
+    "challenge": {
+      "rounds": [
+        {"round": 1, "required": 6, "base_speed": 105, "growth": 0.1, "time_limit": 45},
+        {"round": 2, "required": 8, "base_speed": 125, "growth": 0.12, "time_limit": 43},
+        {"round": 3, "required": 10, "base_speed": 145, "growth": 0.15, "time_limit": 42},
+        {"round": 4, "required": 11, "base_speed": 165, "growth": 0.18, "time_limit": 40},
+        {"round": 5, "required": 13, "base_speed": 185, "growth": 0.2, "time_limit": 40}
+      ]
+    }
+  },
+  "tide": {
+    "low_seconds": 2.75,
+    "high_seconds": 4.25,
+    "hide_previous_stakes_completely": true,
+    "show_moving_stake_during_high": true,
+    "reveal_transition_seconds": 0.4
+  },
+  "spawn": {
+    "strategy": "controlled_shuffle_bag",
+    "avoid_previous_spawn": true,
+    "minimum_spacing_px": 52,
+    "randomize_direction": true,
+    "speed_variance": 0.1
+  },
+  "milestones": {
+    "experience_reward_round": 3,
+    "challenge_reward_round": 5
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "stake_move",
+    "duration": "Theo vận tốc vòng",
+    "implementation": "JS deltaTime x += speed * direction; bounce at bounds",
+    "asset": "PROP/stake.svg"
+  },
+  {
+    "id": "stake_drop",
+    "duration": "360ms",
+    "implementation": "Tween ease-in từ y=145 xuống y=490, khóa input",
+    "asset": "PROP/stake.svg"
+  },
+  {
+    "id": "tide_rise_fall",
+    "duration": "3 giây cao / 3 giây thấp",
+    "implementation": "Canvas clipping + opacity: high che hoàn toàn cọc, low hiển thị đầu cọc",
+    "asset": "BG/wave_strip.svg"
+  },
+  {
+    "id": "ship_approach",
+    "duration": "2.2s",
+    "implementation": "Tween ship x từ 1220 về 690; sway sin nhẹ",
+    "asset": "PROP/enemy_ship.svg"
+  },
+  {
+    "id": "ship_crash",
+    "duration": "1.4s",
+    "implementation": "Nghiêng 0→-28deg, chìm và splash; chỉ phát nếu đã thắng",
+    "asset": "PROP/enemy_ship.svg"
+  },
+  {
+    "id": "command",
+    "duration": "1.0s",
+    "implementation": "Swap character pose idle→command",
+    "asset": "CHR/ngo_quyen_command.svg"
+  },
+  {
+    "id": "victory",
+    "duration": "1.0s",
+    "implementation": "Swap pose command→victory",
+    "asset": "CHR/ngo_quyen_victory.svg"
+  }
+]

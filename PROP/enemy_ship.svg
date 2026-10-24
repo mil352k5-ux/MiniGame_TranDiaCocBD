@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="280" height="204" viewBox="0 0 280 204">
+<defs><linearGradient id="hull" x2="0" y2="1"><stop stop-color="#9a6b40"/><stop offset=".6" stop-color="#5c392c"/><stop offset="1" stop-color="#332821"/></linearGradient><linearGradient id="sail" x2="1" y2="1"><stop stop-color="#e7c89b"/><stop offset=".55" stop-color="#c38b58"/><stop offset="1" stop-color="#835431"/></linearGradient></defs>
+<path d="M20 141Q112 166 258 141L236 177Q141 195 48 175Z" fill="url(#hull)" stroke="#261b1b" stroke-width="6"/>
+<path d="M34 150L256 150 M48 166L239 166" stroke="#bf8c54" stroke-width="4"/>
+<g stroke="#30271f" stroke-width="5"><path d="M130 13V146"/><path d="M78 68V145"/><path d="M196 61V145"/></g>
+<path d="M132 16Q168 46 174 116L136 116Z" fill="url(#sail)" stroke="#4a3126" stroke-width="3"/>
+<path d="M125 18Q89 48 92 116L125 116Z" fill="#d1a271" stroke="#65412b" stroke-width="3"/>
+<path d="M195 66Q232 86 233 127L196 127Z" fill="#bc704f" stroke="#5e3531" stroke-width="3"/>
+<path d="M76 73Q50 95 48 129L78 129Z" fill="#99533b" stroke="#5e3531" stroke-width="3"/>
+<path d="M130 12l39 13-39 10" fill="#aa443d" stroke="#50252b" stroke-width="2"/>
+<path d="M0 143Q18 133 37 140T74 144T111 143T148 142T185 143T222 143T280 139" fill="none" stroke="#e8e6d0" stroke-width="5" opacity=".57"/>
+<g fill="#302b28"><circle cx="93" cy="139" r="8"/><circle cx="150" cy="138" r="8"/><circle cx="196" cy="137" r="8"/></g>
+</svg>
