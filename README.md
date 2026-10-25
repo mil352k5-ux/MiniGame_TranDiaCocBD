@@ -17,7 +17,7 @@ Chi tiết luật mới nằm trong `DATA/gameplay_rules_v2.md` và cấu hình 
 
 `DEMO/index.html` là demo gameplay V2. Mở bằng Chrome hoặc Edge ở chế độ màn hình ngang. Nếu trình duyệt hạn chế asset qua `file://`, chạy HTTP server tại thư mục `BachDang938_Game_Assets` bằng `python -m http.server 8000`, sau đó mở `http://localhost:8000/DEMO/`.
 
-Demo V2 đã tích hợp chế độ Trải nghiệm và Thử thách, bỏ điểm số, tăng số cọc ở chế độ Thử thách, random vị trí xuất hiện cọc tiếp theo, nước dâng che kín cọc cũ, nhân vật PNG hi-res, BGM prototype, trống phản công và hiệu ứng bọt nước. Đã kiểm tra cú pháp JavaScript bằng `node --check` và smoke test luồng bắt đầu/thả cọc trên HTTP server.
+Demo V2 đã tích hợp chế độ Trải nghiệm và Thử thách, bỏ điểm số, tăng số cọc ở chế độ Thử thách, random vị trí xuất hiện cọc tiếp theo, nước dâng che kín cọc cũ, nhân vật PNG hi-res, trống phản công và hiệu ứng bọt nước. Hai BGM prototype được giữ trong thư mục `BGM/` để tham khảo nhưng tạm tắt trong demo vì chưa đạt chất lượng. Đã kiểm tra cú pháp JavaScript bằng `node --check` và smoke test luồng bắt đầu/thả cọc trên HTTP server.
 
 ## Cấu trúc tài nguyên
 
