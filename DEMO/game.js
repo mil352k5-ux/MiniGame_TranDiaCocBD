@@ -4,12 +4,15 @@ const ui={veil:document.querySelector('#veil'),title:document.querySelector('#mo
 const paths={bg:'../BG/river_scene.svg',shore:'../BG/shore_foreground.svg',wave:'../BG/wave_strip.svg',heroIdle:'../CHR/ngo_quyen_highres_idle.png',heroCommand:'../CHR/ngo_quyen_highres_command.png',heroVictory:'../CHR/ngo_quyen_highres_victory.png',boat:'../PROP/enemy_ship.svg',scout:'../PROP/scout_boat.svg',stake:'../PROP/stake.svg',splash:'../VFX/splash.svg',impact:'../VFX/impact.svg',foam:'../VFX/advanced_foam.svg',tideMask:'../VFX/tide_opaque_mask.svg'};
 const img={};let assetsLoaded=0;for(const k in paths){const im=new Image();im.onload=()=>{assetsLoaded++;ui.tech.textContent=`Đã tải ${assetsLoaded}/${Object.keys(paths).length} hình`;};im.onerror=()=>{ui.tech.textContent=`Thiếu tài nguyên ${k}`;};im.src=paths[k];img[k]=im;}
 const audioFiles={click:'../SFX/click.wav',drop:'../SFX/stake_drop.wav',high:'../SFX/water_rise.wav',hit:'../SFX/collision.wav',win:'../SFX/success.wav',lose:'../SFX/lose.wav',impact:'../SFX/ship_impact.wav',drum:'../SFX/vietnamese_drum_prototype.wav'};
-// BGM prototype tạm thời không phát trong demo vì chưa đạt chất lượng. Giữ file trong repo để thay sau.
-const musicTracks={};
+const musicTracks={
+  lobby:new Audio('../BGM/spirit_of_victory_pixabay.mp3'),
+  gameplay:new Audio('../BGM/spirit_of_victory_pixabay.mp3')
+};
+for(const a of Object.values(musicTracks)){a.loop=true;a.volume=.24;}
 let soundOn=true,currentMusic='';
 function sound(k){if(!soundOn||!audioFiles[k])return;const a=new Audio(audioFiles[k]);a.volume=k==='high'?.38:k==='drum'?.6:.54;a.play().catch(()=>{});}
-function setMusic(){currentMusic='';}
-function toggleMusic(){currentMusic='';}
+function setMusic(kind){if(!soundOn)return;for(const [name,a] of Object.entries(musicTracks)){if(name===kind){if(currentMusic!==name){for(const other of Object.values(musicTracks))other.pause();a.currentTime=0;currentMusic=name;}a.play().catch(()=>{});}else a.pause();}}
+function toggleMusic(){if(!soundOn){for(const a of Object.values(musicTracks))a.pause();return;}setMusic(S.mode==='menu'||S.mode==='finished'?'lobby':'gameplay');}
 const S={mode:'menu',gameMode:'challenge',paused:false,round:0,placements:[],x:470,dir:1,currentSpeed:105,drop:null,remaining:45,world:0,tideHigh:false,particles:[],battleTime:0,totalTime:0,reason:'',won:false,flash:0,hitX:0,failTime:0,spawnBag:[]};
 const bounds=CFG.player_reef_area;let modalAction=()=>startGame();
 function modeCfg(){return CFG.modes[S.gameMode]||CFG.modes.challenge}function rnd(){return modeCfg().rounds[S.round]}

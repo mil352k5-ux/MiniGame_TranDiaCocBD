@@ -8,6 +8,7 @@
 "CHR/ngo_quyen_cloak_*.svg","Original procedural SVG created for this game","Original generated assets","Optional cloak layers for tweening; fallback to full PNG pose if layering is unavailable"
 "VFX/advanced_foam.svg","Original procedural SVG created for this game","Original generated asset","Foam burst and wave crest overlay for end-of-round counterattack"
 "BGM/lobby_theme_prototype.wav; BGM/gameplay_theme_prototype.wav","Code-synthesized original audio","Original procedural audio","Prototype loops; replace or remaster for final release if needed"
+"BGM/spirit_of_victory_pixabay.mp3","Huynhhoa89 / Pixabay","Pixabay Content License; AI-generated track","Used as lobby/gameplay BGM in the MVP; attribution page: https://pixabay.com/music/main-title-spirit-of-victory-331312/; keep the license record with the build"
 "SFX/vietnamese_drum_prototype.wav","Code-synthesized original audio","Original procedural audio","Prototype drum hit; not a field recording"
 "FONT/BeVietnamPro-*.ttf","Google Fonts / Be Vietnam Pro","SIL Open Font License 1.1","Vietnamese UI font; license text stored in FONT/OFL.txt"
 "VO/battle_calls_script.json","Original script prepared for this game","Original text; voice recording pending","Record or synthesize with a separately licensed Vietnamese voice before final release"

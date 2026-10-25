@@ -17,7 +17,7 @@ Chi tiết luật mới nằm trong `DATA/gameplay_rules_v2.md` và cấu hình 
 
 `DEMO/index.html` là demo gameplay V2. Mở bằng Chrome hoặc Edge ở chế độ màn hình ngang. Nếu trình duyệt hạn chế asset qua `file://`, chạy HTTP server tại thư mục `BachDang938_Game_Assets` bằng `python -m http.server 8000`, sau đó mở `http://localhost:8000/DEMO/`.
 
-Demo V2 đã tích hợp chế độ Trải nghiệm và Thử thách, bỏ điểm số, tăng số cọc ở chế độ Thử thách, random vị trí xuất hiện cọc tiếp theo, nước dâng che kín cọc cũ, nhân vật PNG hi-res, trống phản công và hiệu ứng bọt nước. Hai BGM prototype được giữ trong thư mục `BGM/` để tham khảo nhưng tạm tắt trong demo vì chưa đạt chất lượng. Đã kiểm tra cú pháp JavaScript bằng `node --check` và smoke test luồng bắt đầu/thả cọc trên HTTP server.
+Demo V2 đã tích hợp chế độ Trải nghiệm và Thử thách, bỏ điểm số, tăng số cọc ở chế độ Thử thách, random vị trí xuất hiện cọc tiếp theo, nước dâng che kín cọc cũ, nhân vật PNG hi-res, trống phản công, hiệu ứng bọt nước và BGM `Spirit of Victory` từ Pixabay. Hai BGM prototype cũ vẫn được giữ trong thư mục `BGM/` để tham khảo. Đã kiểm tra cú pháp JavaScript bằng `node --check` và smoke test luồng bắt đầu/thả cọc trên HTTP server.
 
 ## Cấu trúc tài nguyên
 
@@ -27,7 +27,7 @@ Demo V2 đã tích hợp chế độ Trải nghiệm và Thử thách, bỏ đi�
 - `UI/`, `ICO/`: giao diện và biểu tượng.
 - `VFX/`: splash, impact, bọt nước nâng cao và asset hỗ trợ che nước/ăn mừng.
 - `ANM/`: hợp đồng chuyển động để lập trình tween/canvas.
-- `SFX/`, `BGM/`: âm thanh prototype tự tạo; `VO/battle_calls_script.json` là kịch bản chờ thu giọng.
+- `SFX/`, `BGM/`: âm thanh prototype và BGM gameplay đã cấp phép theo Pixabay Content License; `VO/battle_calls_script.json` là kịch bản chờ thu giọng.
 - `FONT/`: Be Vietnam Pro và giấy phép OFL dùng cho tiếng Việt trong UI.
 - `DATA/`: luật chơi, cấu hình vòng, văn bản giao diện và checklist nội dung.
 - `REFERENCE/`: định hướng mỹ thuật. Không dùng concept nguyên ảnh làm sprite trong game.
