@@ -1,99 +1,94 @@
 import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const rate = 44100;
 const TAU = Math.PI * 2;
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const pentatonic = [146.83, 174.61, 196, 220, 261.63, 293.66, 329.63];
 
-function envelope(t, attack = 0.01, release = 0.2, length = 1) {
-  const a = Math.min(1, t / attack);
-  const r = Math.min(1, Math.max(0, (length - t) / release));
-  return Math.max(0, Math.min(a, r));
+function env(t, length, attack = .02, release = .18) {
+  return Math.max(0, Math.min(1, t / attack, (length - t) / release));
 }
-
-function noise(seed) {
-  const x = Math.sin(seed * 12.9898) * 43758.5453;
-  return (x - Math.floor(x)) * 2 - 1;
+function pseudoNoise(i) { const x = Math.sin(i * 12.9898) * 43758.5453; return (x - Math.floor(x)) * 2 - 1; }
+function wave(type, phase) {
+  if (type === "triangle") return 2 * Math.abs(2 * (phase / TAU - Math.floor(phase / TAU + .5))) - 1;
+  if (type === "square") return Math.sin(phase) >= 0 ? 1 : -1;
+  return Math.sin(phase);
 }
-
+function buffer(seconds) { return new Float32Array(Math.floor(seconds * rate)); }
+function addTone(out, start, length, frequency, amplitude, type = "sine", vibrato = 0, glide = 0) {
+  const from = Math.floor(start * rate), count = Math.floor(length * rate);
+  for (let i = 0; i < count && from + i < out.length; i++) {
+    const t = i / rate;
+    const f = frequency * (1 + glide * t / length + vibrato * Math.sin(TAU * 5.2 * t));
+    const phase = TAU * f * t;
+    const body = wave(type, phase) + .22 * wave("sine", phase * 2.01) + .08 * wave("sine", phase * 3.01);
+    out[from + i] += amplitude * body * env(t, length, .015, Math.min(.5, length * .32));
+  }
+}
+function addDrone(out, start, length, frequency, amplitude) {
+  const from = Math.floor(start * rate), count = Math.floor(length * rate);
+  for (let i = 0; i < count && from + i < out.length; i++) {
+    const t = i / rate;
+    const wobble = 1 + .004 * Math.sin(TAU * .35 * t);
+    out[from + i] += amplitude * (Math.sin(TAU * frequency * wobble * t) + .28 * Math.sin(TAU * frequency * 2 * t)) * env(t, length, .4, .8);
+  }
+}
+function addDrum(out, start, amplitude = .5, tone = 72) {
+  const from = Math.floor(start * rate), length = .62, count = Math.floor(length * rate);
+  for (let i = 0; i < count && from + i < out.length; i++) {
+    const t = i / rate;
+    const hit = Math.sin(TAU * (tone - 28 * Math.min(1, t / .22)) * t) * Math.exp(-7.2 * t);
+    const skin = pseudoNoise(from + i) * Math.exp(-18 * t);
+    out[from + i] += amplitude * (.9 * hit + .16 * skin);
+  }
+}
+function addGong(out, start, amplitude = .18) {
+  const from = Math.floor(start * rate), length = 2.1, count = Math.floor(length * rate);
+  const partials = [[196, 1], [293.66, .45], [392, .25], [523.25, .12]];
+  for (let i = 0; i < count && from + i < out.length; i++) {
+    const t = i / rate;
+    let v = 0; for (const [f, a] of partials) v += a * Math.sin(TAU * f * t);
+    out[from + i] += amplitude * v * Math.exp(-1.65 * t);
+  }
+}
+function normalize(out) {
+  let peak = 0; for (const v of out) peak = Math.max(peak, Math.abs(v));
+  const gain = peak > .92 ? .92 / peak : 1; for (let i = 0; i < out.length; i++) out[i] *= gain;
+  return out;
+}
 function wavBuffer(samples) {
-  const dataSize = samples.length * 2;
-  const b = Buffer.alloc(44 + dataSize);
+  const dataSize = samples.length * 2, b = Buffer.alloc(44 + dataSize);
   b.write("RIFF", 0); b.writeUInt32LE(36 + dataSize, 4); b.write("WAVE", 8);
-  b.write("fmt ", 12); b.writeUInt32LE(16, 16); b.writeUInt16LE(1, 20);
-  b.writeUInt16LE(1, 22); b.writeUInt32LE(rate, 24); b.writeUInt32LE(rate * 2, 28);
-  b.writeUInt16LE(2, 32); b.writeUInt16LE(16, 34); b.write("data", 36); b.writeUInt32LE(dataSize, 40);
+  b.write("fmt ", 12); b.writeUInt32LE(16, 16); b.writeUInt16LE(1, 20); b.writeUInt16LE(1, 22);
+  b.writeUInt32LE(rate, 24); b.writeUInt32LE(rate * 2, 28); b.writeUInt16LE(2, 32); b.writeUInt16LE(16, 34);
+  b.write("data", 36); b.writeUInt32LE(dataSize, 40);
   for (let i = 0; i < samples.length; i++) b.writeInt16LE(Math.max(-32767, Math.min(32767, Math.round(samples[i] * 32767))), 44 + i * 2);
   return b;
 }
-
-function tone(seconds, fn) {
-  const n = Math.floor(seconds * rate);
-  const out = new Float32Array(n);
-  for (let i = 0; i < n; i++) out[i] = fn(i / rate, i);
-  return out;
+function lobbyTheme() {
+  const seconds = 16, out = buffer(seconds), beat = .72;
+  addDrone(out, 0, seconds, 146.83, .16); addDrone(out, 0, seconds, 220, .08);
+  [0, 4.8, 9.6, 14.4].forEach(t => addGong(out, t, .12));
+  const melody = [0, 2, 3, 4, 3, 2, 0, 4, 5, 4, 3, 2, 0, 2, 3, 4, 6, 5, 4, 3, 2, 0];
+  melody.forEach((n, i) => addTone(out, i * beat, beat * .86, pentatonic[n], .12, "triangle", .012, .03));
+  for (let b = 0; b < seconds / beat; b += 2) addDrum(out, b * beat, .16, 68);
+  return normalize(out);
 }
-
-function saveMix(path, layers) {
-  const n = Math.max(...layers.map((x) => x.length));
-  const mix = new Float32Array(n);
-  for (const layer of layers) for (let i = 0; i < layer.length; i++) mix[i] += layer[i];
-  let peak = 0; for (const v of mix) peak = Math.max(peak, Math.abs(v));
-  const gain = peak > 0.92 ? 0.92 / peak : 1;
-  for (let i = 0; i < mix.length; i++) mix[i] *= gain;
-  return fs.writeFile(path, wavBuffer(mix));
+function gameplayTheme() {
+  const seconds = 16, out = buffer(seconds), beat = 60 / 132;
+  addDrone(out, 0, seconds, 146.83, .13); addDrone(out, 0, seconds, 220, .06);
+  const melody = [0, 2, 3, 4, 3, 2, 0, 3, 4, 5, 4, 3, 6, 5, 4, 3, 2, 0, 2, 3, 4, 5, 4, 3];
+  melody.forEach((n, i) => addTone(out, i * beat * .66, beat * .52, pentatonic[n], .13, "triangle", .018, .06));
+  for (let b = 0; b < seconds / beat; b++) { addDrum(out, b * beat, b % 4 === 0 ? .42 : .22, b % 4 === 0 ? 62 : 92); if (b % 8 === 0) addGong(out, b * beat, .1); }
+  return normalize(out);
 }
+function drumHit() { const out = buffer(1.2); addDrum(out, 0, .8, 82); addDrum(out, .28, .36, 134); return normalize(out); }
 
-function drum() {
-  const length = 1.2;
-  const hit = tone(length, (t, i) => {
-    const kick = Math.sin(TAU * (105 - 60 * Math.min(1, t / 0.24)) * t) * Math.exp(-8 * t);
-    const slap = Math.sin(TAU * 180 * t) * Math.exp(-16 * Math.max(0, t - 0.18));
-    const rattle = noise(i + 1) * Math.exp(-10 * Math.max(0, t - 0.26));
-    return 0.84 * kick + 0.24 * slap + 0.12 * rattle;
-  });
-  return hit;
-}
-
-function lobby() {
-  const seconds = 16;
-  const notes = [261.63, 293.66, 329.63, 392, 440, 523.25];
-  const pad = tone(seconds, (t) => {
-    const beat = Math.floor(t / 2) % 4;
-    const root = [notes[0], notes[2], notes[3], notes[1]][beat];
-    return 0.11 * Math.sin(TAU * root * t) + 0.07 * Math.sin(TAU * root * 1.5 * t) + 0.035 * Math.sin(TAU * root * 2 * t);
-  });
-  const pluck = tone(seconds, (t) => {
-    const step = 0.5;
-    const local = t % step;
-    const n = Math.floor(t / step) % notes.length;
-    return 0.2 * Math.sin(TAU * notes[n] * local) * envelope(local, 0.008, 0.22, step);
-  });
-  return [pad, pluck];
-}
-
-function gameplay() {
-  const seconds = 16;
-  const low = tone(seconds, (t) => 0.12 * Math.sin(TAU * 55 * t) * (0.55 + 0.45 * Math.sin(TAU * 2 * t)));
-  const pulse = tone(seconds, (t, i) => {
-    const beat = t % 0.5;
-    const click = noise(i + 99) * Math.exp(-42 * beat);
-    const kick = Math.sin(TAU * 85 * beat) * Math.exp(-18 * beat) * (Math.floor(t / 0.5) % 4 === 0 ? 1 : 0.45);
-    return 0.18 * click + 0.24 * kick;
-  });
-  const motif = tone(seconds, (t) => {
-    const step = 0.5;
-    const local = t % step;
-    const seq = [220, 246.94, 293.66, 329.63, 293.66, 246.94, 196, 220];
-    const f = seq[Math.floor(t / step) % seq.length];
-    return 0.14 * Math.sin(TAU * f * local) * envelope(local, 0.006, 0.18, step);
-  });
-  return [low, pulse, motif];
-}
-
-const root = new URL("../", import.meta.url).pathname.replace(/^\//, "").replaceAll("%20", " ");
-const outDir = root.replace(/\\DATA\\?$/, "");
-await fs.mkdir(`${outDir}SFX`, { recursive: true });
-await fs.mkdir(`${outDir}BGM`, { recursive: true });
-await fs.writeFile(`${outDir}SFX/vietnamese_drum_prototype.wav`, wavBuffer(drum()));
-await saveMix(`${outDir}BGM/lobby_theme_prototype.wav`, lobby());
-await saveMix(`${outDir}BGM/gameplay_theme_prototype.wav`, gameplay());
-console.log("Generated original WAV prototypes.");
+await fs.mkdir(path.join(root, "BGM"), { recursive: true });
+await fs.mkdir(path.join(root, "SFX"), { recursive: true });
+await fs.writeFile(path.join(root, "BGM", "lobby_theme_prototype.wav"), wavBuffer(lobbyTheme()));
+await fs.writeFile(path.join(root, "BGM", "gameplay_theme_prototype.wav"), wavBuffer(gameplayTheme()));
+await fs.writeFile(path.join(root, "SFX", "vietnamese_drum_prototype.wav"), wavBuffer(drumHit()));
+console.log("Generated original Vietnamese-inspired pentatonic BGM and drum prototypes.");
